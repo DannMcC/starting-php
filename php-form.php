@@ -15,8 +15,10 @@
         <br />Comments: %s
         <br />T&amp;C: %s',
             $_POST['name'],
-            $_POST['password'],'','','',
-            $_POST['comments'],'');
+            $_POST['password'],
+            $_POST['gender'],'','',
+            $_POST['comments'],
+            $_POST['tc']);
     }
 //echo $_POST['pwd'];
 ?>
