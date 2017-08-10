@@ -16,7 +16,9 @@
         <br />T&amp;C: %s',
             $_POST['name'],
             $_POST['password'],
-            $_POST['gender'],'','',
+            $_POST['gender'],
+            $_POST['color'],
+            implode(', ',$_POST['languages']),
             $_POST['comments'],
             $_POST['tc']);
     }
