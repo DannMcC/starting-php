@@ -6,7 +6,7 @@
 <body>
 <?php
     $name = '';
-    $passowrd = '';
+    $password = '';
     $comments = '';
     $gender = '';
     $tc = '';
@@ -61,13 +61,13 @@
             <br />Language(s): %s
             <br />Comments: %s
             <br />T&amp;C: %s',
-                htmlspecialchars($_POST['name']),
-                htmlspecialchars($_POST['password']),
-                htmlspecialchars($_POST['gender']),
-                htmlspecialchars($_POST['color']),
-                htmlspecialchars(implode(', ',$_POST['languages'])),
-                htmlspecialchars($_POST['comments']),
-                htmlspecialchars($_POST['tc'])
+                htmlspecialchars($name),
+                htmlspecialchars($password),
+                htmlspecialchars($gender),
+                htmlspecialchars($color),
+                htmlspecialchars(implode(', ',$languages)),
+                htmlspecialchars($comments),
+                htmlspecialchars($tc)
             );
         }
     }
@@ -80,10 +80,18 @@
      ?>"/><br />
     Password:<input type='password' name='password' value="<?php
         echo htmlspecialchars($password);
-     ?>"/><br />
+     ?>"/> <br />
     Gender:
-        <input type='radio' name ='gender' value="f" />Female
-        <input type='radio' name ='gender' value="m" />Male<br />
+        <input type='radio' name ='gender' value="f" <?php
+            if ($gender === 'f') {
+                echo 'checked';
+            }
+        ?>/>Female
+        <input type='radio' name ='gender' value="m" <?php
+            if ($gender === 'm') {
+                echo 'checked';
+            }
+        ?>/>Male<br />
     Favorite color:
         <select name='color'>
             <option value="#f00">Red</option>
@@ -92,9 +100,21 @@
         </select><br />
     Languages Spoken:
         <select name="languages[]" multiple size="3">
-            <option value="en">English</option>
-            <option value="fr">French</option>
-            <option value="it">Italian</option>
+            <option value="en"<?php
+                if (in_array("en", $languages)) {
+                    echo 'selected';
+                }
+            ?>>English</option>
+            <option value="fr"<?php
+                if (in_array('fr', $languages)) {
+                    echo 'selected';
+                }
+            ?>>French</option>
+            <option value="it"<?php
+                if (in_array('it', $languages)) {
+                    echo 'selected';
+                }
+            ?>>Italian</option>
         </select><br />
     Comments: <textarea name="comments"><?php
         echo htmlspecialchars($comments);
